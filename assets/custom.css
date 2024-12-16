@@ -1,0 +1,80 @@
+ .accordion {
+    border-radius: 0px;
+   width:500px;
+  }
+
+  .accordion-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    overflow: hidden; /* Ensures that content stays within the item during animation */
+    transition: background-color 0.3s ease; /* Optional: animate background on active */
+  }
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.accordion-header > div {
+  display: flex;
+  align-items: center;
+}
+.title-image {
+    max-height: 10px;
+    margin-left: 10px;
+    margin-top: -3px;
+}
+.swatch-title {
+  margin-right: 10px; /* Space between title and image */
+}
+  .accordion-header h3 {
+    flex-grow: 1; /* Let the title take up remaining space */
+    margin: 0;
+  }
+
+.accordion-header .price {
+    font-weight: bold;
+    margin-right: -180px;
+}
+
+  .accordion-header .arrow {
+    font-size: 16px;
+    transition: transform 0.3s ease; /* Add smooth transition for arrow rotation */
+  }
+
+  .accordion-item.active .arrow {
+    transform: rotate(0deg); /* Rotate arrow to point upwards */
+  }
+
+  .accordion-text {
+    margin-top: 10px;
+    padding-left: 5px;
+    opacity: 1; /* Keep text visible */
+    transform: translateY(0); /* No translation needed */
+  }
+
+  .accordion-text p {
+      font-size: 13px;
+      color: #000000;
+      margin: 0;
+  }
+
+  .hidden {
+    display: none; /* Hide additional items by default */
+  }
+
+  .accordion-item.active .accordion-text {
+    display: block;
+  }
+.accordion-item.rest-items:hover {
+    background-color: #e6eeee;
+}
+.accordion-item.rest-items {
+    margin: 10px 0px;
+}
+.accordion-item.rest-items .arrow {
+    visibility: hidden;
+}
+  /* .accordion-item.active {
+    background-color: #f9f9f9; /* Change background for the active item */
+  } */

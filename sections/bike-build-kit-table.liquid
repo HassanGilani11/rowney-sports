@@ -1,0 +1,288 @@
+<!-- bike-build-kit-table.liquid -->
+
+{% schema %}
+{
+  "name": "Bike Build Kit Table",
+  "settings": [
+    {
+      "type": "text",
+      "id": "table_title",
+      "label": "Table Title",
+      "default": "Bike Build Kit Table"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Product 1"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product 2"
+    },
+    {
+      "type": "product",
+      "id": "product_3",
+      "label": "Product 3"
+    },
+    {
+      "type": "product",
+      "id": "product_4",
+      "label": "Product 4"
+    },
+    {
+      "type": "product",
+      "id": "product_5",
+      "label": "Product 5"
+    },
+    {
+      "type": "product",
+      "id": "product_6",
+      "label": "Product 6"
+    },
+    {
+      "type": "product",
+      "id": "product_7",
+      "label": "Product 7"
+    },
+    {
+      "type": "product",
+      "id": "product_8",
+      "label": "Product 8"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "row_1",
+      "name": "Table Row",
+      "settings": [
+        { "type": "text", "id": "column_1", "label": "Column 1", "default": "Row - Details" },
+        { "type": "text", "id": "column_2", "label": "Column 2", "default": "Column 2 Data" },
+        { "type": "text", "id": "column_3", "label": "Column 3", "default": "Column 3 Data" },
+        { "type": "text", "id": "column_4", "label": "Column 4", "default": "Column 4 Data" },
+        { "type": "text", "id": "column_5", "label": "Column 5", "default": "Column 5 Data" },
+        { "type": "text", "id": "column_6", "label": "Column 6", "default": "Column 6 Data" },
+        { "type": "text", "id": "column_7", "label": "Column 7", "default": "Column 7 Data" },
+        { "type": "text", "id": "column_8", "label": "Column 8", "default": "Column 8 Data" },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bike Build Kit Table",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="bike-build-kit-table">
+  <div class="container">
+    <!-- Dynamic table title -->
+    <h2>{{ section.settings.table_title }}</h2>
+    <div class="table-wrapper">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>
+              <div class="table-row">
+                <span>{{ section.settings.product_1.title }}</span>
+                <span class="price">{{ section.settings.product_1.price | money }}</span>
+              </div>
+            </th>
+            <th>
+              <div class="table-row">
+                <span>{{ section.settings.product_2.title }}</span>
+                <span class="price">{{ section.settings.product_2.price | money }}</span>
+              </div>
+            </th>
+            <th>
+              <div class="table-row">
+                <span>{{ section.settings.product_3.title }}</span>
+                <span class="price">{{ section.settings.product_3.price | money }}</span>
+              </div>
+            </th>
+            <th>
+              <div class="table-row">
+                <span>{{ section.settings.product_4.title }}</span>
+                <span class="price">{{ section.settings.product_4.price | money }}</span>
+              </div>
+            </th>
+            <th>
+              <div class="table-row">
+                <span>{{ section.settings.product_5.title }}</span>
+                <span class="price">{{ section.settings.product_5.price | money }}</span>
+              </div>
+            </th>
+            <th>
+              <div class="table-row">
+                <span>{{ section.settings.product_6.title }}</span>
+                <span class="price">{{ section.settings.product_6.price | money }}</span>
+              </div>
+            </th>
+            <th>
+              <div class="table-row">
+                <span>{{ section.settings.product_7.title }}</span>
+                <span class="price">{{ section.settings.product_7.price | money }}</span>
+              </div>
+            </th>
+            <th>
+              <div class="table-row">
+                <span>{{ section.settings.product_8.title }}</span>
+                <span class="price">{{ section.settings.product_8.price | money }}</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for block in section.blocks %}
+            <tr>
+              <td class="title">
+                <b>{{ block.settings.column_1 }}</b>
+              </td>
+              <td>{{ block.settings.column_2 }}</td>
+              <td>{{ block.settings.column_3 }}</td>
+              <td>{{ block.settings.column_4 }}</td>
+              <td>{{ block.settings.column_5 }}</td>
+              <td>{{ block.settings.column_6 }}</td>
+              <td>{{ block.settings.column_7 }}</td>
+              <td>{{ block.settings.column_8 }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+   .bike-build-kit-table {
+      padding: 0px 55px;
+      margin: 40px 0;
+    }
+
+    .bike-build-kit-table .container {
+      max-width: 100%;
+      overflow-x: auto; /* Enables horizontal scroll */
+    }
+
+    .bike-build-kit-table h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+  /* Wrapper to control the table's horizontal scroll */
+  .table-wrapper {
+    width: 100%; /* Full screen width */
+    overflow-x: auto; /* Horizontal scroll */
+  }
+  /* Ensure the table has a fixed layout */
+  .custom-table {
+    width: 215%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+    .custom-table thead {
+      background-color: #f8f8f8;
+    }
+
+  /* Optional styling for borders and padding */
+  .custom-table th, .custom-table td {
+    padding: 10px;
+    text-align: left;
+    border: unset;
+  }
+    .custom-table th {
+      background-color: #ffffff;
+      font-weight: bold;
+      border-bottom: 2px solid #909090;
+      padding: .5rem 0;
+    }
+    /* Set the first <th> in the table header to have a white background */
+  .custom-table thead th:first-child {
+    background-color: white; /* White background for the first <th> */
+    border: unset;
+  }
+  /* Additional spacing and alignment */
+  .custom-table td {
+    vertical-align: middle;
+    color: #333; /* Darker text for readability */
+  }
+  /* First column retains its normal width and sticky behavior */
+  .custom-table th:nth-child(1),
+  .custom-table td:nth-child(1) {
+    position: sticky;
+    left: 0; /* Stick to the left side of the table */
+    z-index: 2; /* Ensure it stays above the other columns */
+    font-weight: bold;
+    text-align: left;
+    width: 7%;
+    padding: 1rem .5rem 1rem 1rem;
+  }
+
+  /* Ensure sticky column doesn't override background color */
+  .custom-table th:nth-child(1),
+  .custom-table td:nth-child(1) {
+    text-transform: uppercase;
+    background-color: inherit; /* Inherits row color */
+  }
+  /* Set each of the 2nd, 3rd, and 4th columns to take up 30% of the table width */
+  .custom-table th:nth-child(2),
+  .custom-table td:nth-child(2),
+  .custom-table th:nth-child(3),
+  .custom-table td:nth-child(3),
+  .custom-table th:nth-child(4),
+  .custom-table td:nth-child(4),
+  .custom-table th:nth-child(5),
+  .custom-table td:nth-child(5),
+  .custom-table th:nth-child(6),
+  .custom-table td:nth-child(6),
+  .custom-table th:nth-child(7),
+  .custom-table td:nth-child(7),
+  .custom-table th:nth-child(8),
+  .custom-table td:nth-child(8),
+  .custom-table th:nth-child(9),
+  .custom-table td:nth-child(9) {
+    width: 13%; /* Fixed width for columns 5-9 */
+    font-size: 14px;
+  }
+    /* Alternating row colors for better readability */
+  .custom-table tbody tr:nth-child(odd) {
+    background-color: #fff; /* Light gray for odd rows */
+  }
+
+  .custom-table tbody tr:nth-child(even) {
+    background-color: #f7f7f6; /* Light blue for even rows */
+  }
+    /* Row hover effect */
+  .custom-table tbody tr:hover {
+    background-color: #e6eeee; /* Hover color */
+    transition: all .4s ease-in-out;
+  }
+
+    /* Custom scrollbar styling */
+  .table-wrapper::-webkit-scrollbar {
+    height: 5px; /* Height of horizontal scrollbar */
+  }
+
+  .table-wrapper::-webkit-scrollbar-track {
+    background: #e0e0e0; /* Light gray track */
+    border-radius: 5px;
+  }
+
+  .table-wrapper::-webkit-scrollbar-thumb {
+    background: #bbb; /* Blue scrollbar */
+    border-radius: 5px;
+  }
+  .custom-table .table-row {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    font-size: 15px;
+  }
+  .table-row span.price {
+    text-align: right; /* Align price to the right */
+    font-weight: 400; /* Set font weight to 400 for price */
+  }
+</style>

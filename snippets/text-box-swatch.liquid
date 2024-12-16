@@ -1,0 +1,71 @@
+<div class="accordion">
+  {% assign upsell_products = product.metafields.custom.upsells.value %}
+  {% for product in upsell_products %}
+    <div class="accordion-item {% if checked == true %}active{% endif %}" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <div style="display: flex; align-items: center;">
+          <h3 class="swatch-title">
+            {{ product.title }}
+          </h3>
+          <img
+            class="title-image"
+            src="{{ product.metafields.custom.title_image | default: 'https://cdn.shopify.com/s/files/1/0878/6549/1735/files/turq_logo.png?v=1729054290' }}"
+            alt="Product Title Image"
+            width="auto"
+            height="auto"
+          >
+        </div>
+        <span class="price">
+          {{ product.price | money }}
+        </span>
+        <i class="fa-solid fa-chevron-down arrow"></i>
+      </div>
+      <div class="accordion-text {% if checked == true %}visible{% endif %}">
+        <p class="swatch-description">
+          {{ product.description | strip_html | truncate: 100 }}
+        </p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const allItems = document.querySelectorAll('.accordion-item');
+      const firstItem = allItems[0];  // Select the first item
+
+      // Initially hide all items except the first one
+      allItems.forEach((item, index) => {
+          if (index !== 0) {
+              item.classList.add('hidden');  // Hide all items except the first one
+          }
+
+          // Add specific classes to the second and third items
+          if (index === 1) {
+              item.classList.add('rest-items'); // Add "second" class to the second item
+          } else if (index === 2) {
+              item.classList.add('rest-items');  // Add "third" class to the third item
+          }
+      });
+
+      // Add click event listener for the first item
+      firstItem.addEventListener('click', function() {
+          // Check if the second and third items are currently hidden
+          const secondItem = allItems[1];  // Select the second item
+          const thirdItem = allItems[2];   // Select the third item
+
+          // If the second item is hidden, show both second and third items
+          if (secondItem.classList.contains('hidden')) {
+              secondItem.classList.remove('hidden');
+              thirdItem.classList.remove('hidden');
+          } else {
+              // Keep them hidden
+              secondItem.classList.add('hidden');
+              thirdItem.classList.add('hidden');
+          }
+
+          // Optionally, toggle active class on the first item
+          firstItem.classList.toggle('active');
+      });
+  });
+</script>
